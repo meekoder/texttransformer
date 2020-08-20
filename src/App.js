@@ -9,15 +9,14 @@ library.add(faArrowLeft);
 
 function HistoryList({list}) {
 	const listItems = list.map(x => <li>{x}</li>)
-	return (
-		<ol>{listItems}</ol>
-	)
+	return <ol>{listItems}</ol>
 }
 
 function App() {
 	const textInput = createRef()
 	const [text, setText] = useState()
 	const [history, setHistory] = useState([])
+	const [defaultValue, setDefaultValue] = useState(text);
 	const upperCase = () => {
 		const input = textInput.current.value.toUpperCase()
 		setText(input)
@@ -38,10 +37,17 @@ function App() {
 		setText(input)
 		setHistory([...history, input])
 	}
+
+	const reset = () => {
+		setDefaultValue("")
+		setText(defaultValue) 
+	}
+
 	const handleBack = () => {
 		setText(history.pop())
 		setHistory(history)
 	}
+
 	const clearHistory = () => {
 		setHistory([])
 	}
@@ -50,21 +56,14 @@ function App() {
 			<section className="hero is-link is-fullheight">
 				<div className="hero-body">
 					<div className="container" id="text">
-						<h1 className="title">Text Transformer</h1>
+						<h1 className="title">T3xT tR@n5f0rMeR</h1>
 						<div>
 							<div>
-								<div className="field is-grouped" id="text-btn">
-									<p className="control">
-										<button className="button is-danger is-small">Copy</button>
-									</p>
-									<p className="control">
-										<button className="button is-dark is-small" onClick={handleBack}><FontAwesomeIcon icon={faArrowLeft} size="2x"/></button>
-									</p>
-									<p className="control">
-										<button className="button is-small">Reset Input</button>
-									</p>
-									</div>
-								<textarea className="textarea is-medium" placeholder="what text do you want to transform?" ref={textInput} value={text}></textarea>
+								<div className="back-reset">
+									<button className="button is-small" id="back" onClick={handleBack}><FontAwesomeIcon icon={faArrowLeft} size="2x"/></button>
+									<button className="button is-small" onClick={reset}><strong>Reset Input</strong></button>
+								</div>
+								<textarea className="textarea is-medium" placeholder="what text do you want to transform?" id="textbox" ref={textInput} value={text} onChange={e => setText(e.target.value)}></textarea>
 							</div>
 							<div className="buttons">
 								<button className="button is-dark" onClick={upperCase}>UPPER CASE</button>

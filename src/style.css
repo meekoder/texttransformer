@@ -1,13 +1,11 @@
-#text {
+#text,
+.buttons {
 	display: flex;
-	flex-direction: row;
 	justify-content: space-around;
 }
 
 .buttons {
 	margin-top: 5px;
-	display: flex;
-	justify-content: space-around;
 }
 
 .buttons button {
@@ -16,21 +14,18 @@
 	max-width: 150px;
 }
 
-.text-btn {
+.back-reset {
+	display: flex;
+	justify-content: space-between;
 	margin-bottom: 5px;
-	float: right;
 }
 
 #history-list {
 	justify-content: center;
 	background-color: white;
+	text-align: justify;
 }
 
 #foot {
 	background-color: #ededed;
-}
-
-.back {
-	display: flex;
-	flex-direction: row;
 }
