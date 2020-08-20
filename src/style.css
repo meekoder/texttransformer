@@ -1,23 +1,36 @@
-.buttons {
+#text {
 	display: flex;
-	flex-direction: column;
-	padding: 10px;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.buttons {
+	margin-top: 5px;
+	display: flex;
+	justify-content: space-around;
 }
 
 .buttons button {
 	cursor: pointer;
-	margin: 5px;
 	min-width: 150px;
 	max-width: 150px;
 }
 
-textarea {
-	height: 150px;
-	width: 500px;
+.text-btn {
+	margin-bottom: 5px;
+	float: right;
 }
 
-#textboxes {
+#history-list {
+	justify-content: center;
+	background-color: white;
+}
+
+#foot {
+	background-color: #ededed;
+}
+
+.back {
 	display: flex;
-	justify-content: space-around;
-	align-items: center;
+	flex-direction: row;
 }
