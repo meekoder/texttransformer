@@ -1,17 +1,26 @@
-#text,
-.buttons {
+.title {
+	font-size: 50px;
+}
+
+.main {
 	display: flex;
-	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	justify-content: space-evenly;
 }
 
 .buttons {
-	margin-top: 5px;
+	justify-content: space-evenly;
 }
 
-.buttons button {
-	cursor: pointer;
+.buttons .button {
+	margin-top: 5px;
 	min-width: 150px;
 	max-width: 150px;
+}
+
+.container {
+	margin: 0;
 }
 
 .back-reset {
@@ -20,12 +29,15 @@
 	margin-bottom: 5px;
 }
 
+.panel-block {
+	background-color: #ededed;
+}
+
 #history-list {
-	justify-content: center;
 	background-color: white;
 	text-align: justify;
 }
 
-#foot {
-	background-color: #ededed;
+#history-list li {
+	margin-left: 10px;
 }
