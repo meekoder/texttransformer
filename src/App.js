@@ -13,30 +13,27 @@ function HistoryList({list}) {
 }
 
 function App() {
-	const textInput = createRef()
 	const [text, setText] = useState()
 	const [history, setHistory] = useState([])
-	const [defaultValue, setDefaultValue] = useState(text);
 
 	const transformer = str => {
-		if (textInput.current.value.length < 1)	return alert('Put some text in the text box!')
+		if (text.length < 1) return alert('Put some text in the text box!')
 		let input;
 		if (str === 'upper') {
-			input = textInput.current.value.toUpperCase()
+			input = text.toUpperCase()
 		} else if (str === 'lower') {
-			input = textInput.current.value.toLowerCase()
+			input = text.toLowerCase()
 		} else if (str === 'title') {
-			input = textInput.current.value.split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ') 
+			input = text.split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ') 
 		} else if (str === 'rev'){
-			input = [...textInput.current.value].reverse().join('')
+			input = [...text].reverse().join('')
 		}
 		setText(input)
 		setHistory([...history, input])
 	}
 
 	const reset = () => {
-		setDefaultValue("")
-		setText(defaultValue) 
+		setText("") 
 	}
 
 	const handleBack = () => {
@@ -59,7 +56,7 @@ function App() {
 								<button className="button is-small" onClick={handleBack}><FontAwesomeIcon icon={faArrowLeft} size="2x"/></button>
 								<button className="button is-small" onClick={reset}><strong>Reset Input</strong></button>
 							</div>
-							<textarea className="textarea is-medium" placeholder="what text do you want to transform?" ref={textInput} value={text} onChange={e => setText(e.target.value)}></textarea>
+							<textarea className="textarea is-medium" placeholder="what text do you want to transform?" value={text} onChange={e => setText(e.target.value)}></textarea>
 							<div className="buttons">
 								<button className="button is-dark" onClick={() => transformer('upper')}>UPPER CASE</button>
 								<button className="button is-dark" onClick={() => transformer('lower')}>lower case</button>
